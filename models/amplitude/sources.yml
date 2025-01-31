@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: amplitude
+    database: TIL_DATA_ENGINEERING
+    schema: AC_STAGING
+    tables:
+      - name: amplitude_events
