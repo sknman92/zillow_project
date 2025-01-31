@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: mailchimp
+    database: TIL_DATA_ENGINEERING
+    schema: jmartin_STAGING
+    tables:
+      - name: campaigns
+      - name: email_activity
+      - name: lists
+      - name: list_members
+      - name: reports
+      - name: unsubscribes
