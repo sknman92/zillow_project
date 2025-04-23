@@ -42,8 +42,8 @@ models:
         description: foreign key from the lists table
         data_tests:
           - relationships:
-            to: source('mailchimp','lists')
-            field: "list_id"
+              to: source('mailchimp','lists')
+              field: "list_id"
 
       - name: email_id
         data_type: varchar
@@ -58,8 +58,8 @@ models:
         description: foreign key from campaigns table
         data_tests:
           - relationships:
-            to: source('mailchimp','campaigns')
-            field: "campaign_id"
+              to: source('mailchimp','campaigns')
+              field: "campaign_id"
 
       - name: merge_fields
         data_type: varchar
