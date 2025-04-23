@@ -1,5 +1,5 @@
 # This is a yml file in which we provide descriptions for both models and columns.
-# You can see how we also apply doc blocks (https://docs.getdbt.com/docs/building-a-dbt-project/documentation#using-docs-blocks) to 
+# You can see how we also apply doc blocks (https://docs.getdbt.com/docs/building-a-dbt-project/documentation#using-docs-blocks) to
 # write descriptions in one place (via a md file) and apply them through the project.
 # We have also applied tests to every primary key listed in this file.
 # Full documentation: https://docs.getdbt.com/reference/declaring-properties
@@ -12,14 +12,14 @@ models:
     columns:
       - name: customer_key
         description: Primary key on the customers table
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: region
         description: region name
-        tests:
+        data_tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              values: ["AFRICA", "MIDDLE EAST", "ASIA", "EUROPE", "AMERICA"]
               severity: warn
       - name: name
         description: customer id
@@ -34,13 +34,12 @@ models:
       - name: market_segment
         description: market segment of the customer
 
-
   - name: dim_parts
     description: Parts dimensions table
     columns:
       - name: part_key
         description: primary key of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: manufacturer
@@ -63,7 +62,7 @@ models:
     columns:
       - name: supplier_key
         description: primary key of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: supplier_name
@@ -78,13 +77,13 @@ models:
         description: '{{ doc("phone_number") }}'
       - name: account_balance
         description: '{{ doc("account_balance") }}'
- 
+
   - name: fct_order_items
     description: order items fact table
     columns:
       - name: order_item_key
         description: '{{ doc("order_item_key") }}'
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: order_key
@@ -135,18 +134,18 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-  
+
   - name: fct_orders
     description: orders fact table
     columns:
       - name: order_key
         description: primary key of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: customer_key
         description: foreign key for customers
-        tests:
+        data_tests:
           - relationships:
               to: ref('dim_customers')
               field: customer_key
