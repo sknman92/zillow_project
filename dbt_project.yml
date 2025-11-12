@@ -42,9 +42,6 @@ seeds:
 models:
   des_training_project:
     # Applies to all files under models/example/
-    mailchimp:
-      staging:
-        +materialized: view
     sample-snowflake:
       staging:
         +materialized: view
@@ -61,3 +58,11 @@ models:
         core:
           +materialized: table
           query_tag: dbt_marts
+
+    sandwiches:
+      +materialized: view
+      marts:
+        +materialized: table
+
+      staging:
+        +materialized: table
