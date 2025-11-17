@@ -16,5 +16,4 @@ Stats you should expect to see:
 
 - With an incremental run, you will see 7 rows of orders with the order_date `1992-02-01` and 6 rows of orders with the order_date of `1992-02-02`
 
-
  */
