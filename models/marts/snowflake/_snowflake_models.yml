@@ -1,13 +1,24 @@
 # This is a yml file in which we provide descriptions for both models and columns.
-# You can see how we also apply doc blocks (https://docs.getdbt.com/docs/building-a-dbt-project/documentation#using-docs-blocks) to
-# write descriptions in one place (via a md file) and apply them through the project.
-# We have also applied tests to every primary key listed in this file.
 # Full documentation: https://docs.getdbt.com/reference/declaring-properties
 
 version: 2
 
 models:
-  - name: dim_customers
+  # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
+  - name: agg_ship_modes_hardcoded_pivot
+    description: Example of creating a pivot table with dynamic columns based on the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order
+
+  - name: agg_ship_modes_dynamic_pivot
+    description: Example of creating a pivot table with hard-coded columns based on a query of the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order
+
+  #These are non-aggregated models
+  - name: customers
     description: Customer dimensions table
     columns:
       - name: customer_key
@@ -19,8 +30,10 @@ models:
         description: region name
         data_tests:
           - accepted_values:
-              values: ["AFRICA", "MIDDLE EAST", "ASIA", "EUROPE", "AMERICA"]
-              severity: warn
+              arguments:
+                values: ["AFRICA", "MIDDLE EAST", "ASIA", "EUROPE", "AMERICA"]
+              config:
+                severity: warn
       - name: name
         description: customer id
       - name: address
@@ -34,7 +47,7 @@ models:
       - name: market_segment
         description: market segment of the customer
 
-  - name: dim_parts
+  - name: parts
     description: Parts dimensions table
     columns:
       - name: part_key
@@ -57,7 +70,7 @@ models:
       - name: retail_price
         description: '{{ doc("retail_price") }}'
 
-  - name: dim_suppliers
+  - name: suppliers
     description: Suppliers dimensions table
     columns:
       - name: supplier_key
@@ -78,7 +91,7 @@ models:
       - name: account_balance
         description: '{{ doc("account_balance") }}'
 
-  - name: fct_order_items
+  - name: order_items
     description: order items fact table
     columns:
       - name: order_item_key
@@ -135,7 +148,7 @@ models:
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
 
-  - name: fct_orders
+  - name: orders
     description: orders fact table
     columns:
       - name: order_key
@@ -147,9 +160,49 @@ models:
         description: foreign key for customers
         data_tests:
           - relationships:
-              to: ref('dim_customers')
-              field: customer_key
-              severity: error
+              arguments:
+                to: ref('dim_customers')
+                field: customer_key
+              config:
+                severity: error
+      - name: order_date
+        description: date of the order
+      - name: status_code
+        description: status of the order
+      - name: priority_code
+        description: code associated with the order
+      - name: clerk_name
+        description: id of the clerk
+      - name: ship_priority
+        description: numeric representation of the shipping priority, zero being the default
+      - name: order_count
+        description: count of order
+      - name: gross_item_sales_amount
+        description: '{{ doc("gross_item_sales_amount") }}'
+      - name: item_discount_amount
+        description: '{{ doc("item_discount_amount") }}'
+      - name: item_tax_amount
+        description: '{{ doc("item_tax_amount") }}'
+      - name: net_item_sales_amount
+        description: '{{ doc("net_item_sales_amount") }}'
+
+  - name: incremental_orders
+    description: orders fact table build incrementally
+    columns:
+      - name: order_key
+        description: primary key of the model
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_key
+        description: foreign key for customers
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_key
+              config:
+                severity: error
       - name: order_date
         description: date of the order
       - name: status_code

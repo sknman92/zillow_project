@@ -7,7 +7,7 @@
 version: 2
 
 models:
-  - name: stg_tpch_customers
+  - name: stg_tpch__customers
     description: staging layer for customers data
     columns:
       - name: customer_key
@@ -30,7 +30,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_line_items
+  - name: stg_tpch__line_items
     description: staging layer for line items data
     columns:
       - name: order_item_key
@@ -71,7 +71,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_nations
+  - name: stg_tpch__nations
     description: staging layer for nations data
     columns:
       - name: nation_key
@@ -86,7 +86,7 @@ models:
       - name: comment
         description: additional commentary
 
-  - name: stg_tpch_orders
+  - name: stg_tpch__orders
     description: staging layer for orders data
     columns:
       - name: order_key
@@ -111,7 +111,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_part_suppliers
+  - name: stg_tpch__part_suppliers
     description: staging layer for suppliers data
     columns:
       - name: part_supplier_key
@@ -130,7 +130,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_parts
+  - name: stg_tpch__parts
     description: staging layer for parts data
     columns:
       - name: part_key
@@ -155,7 +155,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_regions
+  - name: stg_tpch__regions
     description: staging layer for regions data
     columns:
       - name: region_key
@@ -168,7 +168,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
-  - name: stg_tpch_suppliers
+  - name: stg_tpch__suppliers
     description: staging layer for suppliers data
     columns:
       - name: supplier_key

@@ -18,5 +18,5 @@ select
         {%- if not loop.last -%},{% endif %}
     {% endfor %}
 
-from {{ ref('fct_order_items') }}
+from {{ ref('order_items') }}
 group by 1
