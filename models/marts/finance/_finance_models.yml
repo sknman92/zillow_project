@@ -18,35 +18,6 @@ models:
         description: year of the order
 
   #These are non-aggregated models
-  - name: customers
-    description: Customer dimensions table
-    columns:
-      - name: customer_key
-        description: Primary key on the customers table
-        data_tests:
-          - unique
-          - not_null
-      - name: region
-        description: region name
-        data_tests:
-          - accepted_values:
-              arguments:
-                values: ["AFRICA", "MIDDLE EAST", "ASIA", "EUROPE", "AMERICA"]
-              config:
-                severity: warn
-      - name: name
-        description: customer id
-      - name: address
-        description: address of the customer
-      - name: nation
-        description: nation name
-      - name: phone_number
-        description: phone number of the customer
-      - name: account_balance
-        description: '{{ doc("account_balance") }}'
-      - name: market_segment
-        description: market segment of the customer
-
   - name: parts
     description: Parts dimensions table
     columns:
