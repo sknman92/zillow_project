@@ -41,9 +41,8 @@ seeds:
 
 models:
   des_training_project:
-    # Applies to all files under models/example/
-    sample-snowflake:
-      staging:
+    staging:
+      tpch:
         +materialized: view
         schema: staging
         # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
@@ -54,15 +53,12 @@ models:
         tags: "daily"
         # You can apply tags to models, snapshots, seeds. This allows you to run based on the tag such as `dbt run --model tag:daily` which would let you run all the models tagged "daily"
         # learn more about tags: https://docs.getdbt.com/reference/resource-configs/tags#definition
-      marts:
-        core:
-          +materialized: table
-          query_tag: dbt_marts
+    intermediate:
+      snowflake:
+        +materialized: view
+        query_tag: dbt_int
 
-    sandwiches:
-      +materialized: view
-      marts:
+    marts:
+      snowflake:
         +materialized: table
-
-      staging:
-        +materialized: table
+        query_tag: dbt_marts

@@ -7,12 +7,12 @@
 
 with orders as (
     
-    select * from {{ ref('stg_tpch_orders') }} 
+    select * from {{ ref('stg_tpch__orders') }} 
 
 ),
 order_item as (
     
-    select * from {{ ref('order_items') }}
+    select * from {{ ref('int_order_items') }}
 
 ),
 order_item_summary as (

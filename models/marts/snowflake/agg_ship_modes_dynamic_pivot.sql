@@ -2,8 +2,8 @@
 
 {%- call statement('result', fetch_result=True) -%}
 
-    {# this pulls the unique ship modes from the fct_order_items table #}
-    select ship_mode from {{ ref('fct_order_items') }} group by 1 
+    {# this pulls the unique ship modes from the order_items table #}
+    select ship_mode from {{ ref('order_items') }} group by 1 
 
 {%- endcall %}
 
@@ -18,5 +18,5 @@ select
         {%- if not loop.last -%},{% endif %}
     {% endfor %}
 
-from {{ ref('fct_order_items') }}
+from {{ ref('order_items') }}
 group by 1
