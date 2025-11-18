@@ -1,5 +1,6 @@
-{{ codegen.generate_source(
-    schema_name= 'jaffle_shop' 
-    , database_name= 'raw'
-    , generate_columns = true) 
-    }}
+
+{{ codegen.generate_base_model(
+    source_name='jaffle_shop',
+    table_name='orders',
+    leading_commas = true) 
+}}
