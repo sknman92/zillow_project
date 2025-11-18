@@ -1,6 +1,3 @@
-
-{{ codegen.generate_base_model(
-    source_name='jaffle_shop',
-    table_name='orders',
-    leading_commas = true) 
-}}
+{{ codegen.generate_model_import_ctes(
+    model_name = 'sandwiches_customers'
+) }}

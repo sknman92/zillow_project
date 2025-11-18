@@ -59,6 +59,9 @@ models:
       query_tag: dbt_int
 
     marts:
+      sandwiches:
+        +materialized: table
+        query_tag: dbt_marts
       finance:
         +materialized: table
         query_tag: dbt_marts
