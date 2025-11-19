@@ -42,17 +42,21 @@ seeds:
 models:
   des_training_project:
     staging:
-      tpch:
-        +materialized: view
-        schema: staging
-        # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
-        # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
-        query_tag: dbt_staging
+      query_tag: dbt_staging
         # This applies a query tag named `dbt_staging` to any related queries in Snowflake's Query_History
         # learn more about query tags: https://docs.getdbt.com/reference/resource-configs/snowflake-configs#query-tags
+      schema: staging
+      # This configuration builds every model in the staging directory into a schema named staging_<target_schema>
+      # learn more about custom schemas: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas
+      tpch:
+        +materialized: view
         tags: "daily"
         # You can apply tags to models, snapshots, seeds. This allows you to run based on the tag such as `dbt run --model tag:daily` which would let you run all the models tagged "daily"
         # learn more about tags: https://docs.getdbt.com/reference/resource-configs/tags#definition
+      temp:
+        +materialized: view
+        schema: temporary
+
     intermediate:
       schema: intermediate
       +materialized: view
@@ -62,9 +66,13 @@ models:
       sandwiches:
         +materialized: table
         query_tag: dbt_marts
+        tags: sandwiches
       finance:
         +materialized: table
         query_tag: dbt_marts
       marketing:
         +materialized: table
         query_tag: dbt_marts
+      
+
+
