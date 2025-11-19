@@ -1,3 +1,5 @@
+--depends_on {{ ref('tmp_orders_with_detail_to_refactor') }}
+
 with sandwiches_customers as (
 
     select * from {{ ref('sandwiches_customers') }}

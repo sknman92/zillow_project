@@ -29,6 +29,12 @@ seeds:
   # This declares that column names in the seed file will not be quoted when the table is created.
   +quote_columns: false
 
+on-run-end:
+# dropping the temporary schema and everything within it after a run has completed
+  - "{{' DROP SCHEMA '~ target.database ~'.'~ target.schema ~'_TEMPORARY CASCADE;'}}"
+
+
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 

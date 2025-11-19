@@ -90,3 +90,9 @@ models:
 
       - name: payment_status
         description: "{{doc('payment_status')}}"
+
+    config:
+      post-hook:
+        - "{{ 'DROP view '~ target.database ~'.'~ target.schema ~'_temporary.tmp_orders_with_detail_to_refactor'}} "
+
+          
