@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  # compare the entire table 
+  - name: sandwiches_orders
+    tests:
+      - dbt_utils.equality:
+          arguments:
+            compare_model: ref('tmp_orders_with_detail_to_refactor')
