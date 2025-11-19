@@ -8,10 +8,22 @@ sources:
         columns:
           - name: id
             data_type: number
+            description: "Primary key of table"
+            data_tests:
+              - unique
+              - not_null
+
           - name: first_name
             data_type: varchar
+            data_tests:
+              - not_null:
+                  config:
+                    severity: warn
+                            
           - name: last_name
             data_type: varchar
+            data_tests:
+              - not_null  
 
       - name: items
         columns:
@@ -26,8 +38,21 @@ sources:
         columns:
           - name: id
             data_type: number
+            description: "Primary key of table"
+            data_tests:
+              - unique
+              - not_null
+
           - name: user_id
             data_type: number
+            description: "Foreign key from customers table"
+            data_tests:
+              - not_null  
+              - relationships:
+                  arguments:
+                    field: id
+                    to: source('jaffle_shop', 'customers')
+
           - name: order_date
             data_type: date
           - name: status
@@ -36,7 +61,7 @@ sources:
             data_type: timestamp_ntz
 
       - name: products
-        columns:
+        columns:  
           - name: sku
             data_type: varchar
           - name: name

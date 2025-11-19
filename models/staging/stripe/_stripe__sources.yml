@@ -7,13 +7,45 @@ sources:
       - name: payment
         columns:
           - name: id
+            description: "primary key for payment table"
             data_type: number
+            data_tests:
+              - unique
+              - not_null
+
           - name: orderid
             data_type: number
+            description: "foreign key from jaffle_shop orders table"
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    field: id
+                    to: source('jaffle_shop', 'orders')
+              
+
           - name: paymentmethod
             data_type: varchar
+            description: "the method of payment used with stripe"
+            data_tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values: ['credit_card', 
+                            'coupon',
+                            'bank_transfer',
+                            'gift_card']
+
           - name: status
             data_type: varchar
+            description: "The status of the pyamnet sent with stripe"
+            data_tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values: ['success', 
+                            'fail']
+                      
           - name: amount
             data_type: number
           - name: created
