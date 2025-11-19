@@ -43,6 +43,8 @@ models:
 
       - name: amount
         description: "{{doc('amount')}}"
+        data_tests:
+          - no_negative_values
 
       - name: payment_date
         description: ""

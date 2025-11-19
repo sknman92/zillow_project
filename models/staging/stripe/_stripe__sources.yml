@@ -48,6 +48,9 @@ sources:
 
           - name: amount
             data_type: number
+            data_tests:
+              - no_negative_values
+
           - name: created
             data_type: date
           - name: _batched_at
