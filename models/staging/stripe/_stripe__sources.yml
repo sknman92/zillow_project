@@ -7,7 +7,7 @@ sources:
       - name: payment
         columns:
           - name: id
-            description: "primary key for payment table"
+            description: "{{doc('payment_id')}}"
             data_type: number
             data_tests:
               - unique
@@ -15,7 +15,7 @@ sources:
 
           - name: orderid
             data_type: number
-            description: "foreign key from jaffle_shop orders table"
+            description: "{{doc('order_id')}}"
             data_tests:
               - not_null
               - relationships:
@@ -26,7 +26,7 @@ sources:
 
           - name: paymentmethod
             data_type: varchar
-            description: "the method of payment used with stripe"
+            description: "{{doc('payment_method')}}"
             data_tests:
               - not_null
               - accepted_values:
@@ -45,7 +45,7 @@ sources:
                   arguments:
                     values: ['success', 
                             'fail']
-                      
+
           - name: amount
             data_type: number
           - name: created

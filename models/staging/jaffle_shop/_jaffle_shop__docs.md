@@ -14,7 +14,7 @@ The primary key of orders table, unique per order
 
 Customers first name
 
-{% enddocs %}
+{% enddoc %}
 
 {%docs last_name %}
 
