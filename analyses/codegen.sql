@@ -1,3 +1,5 @@
-{{ codegen.generate_model_import_ctes(
-    model_name = 'sandwiches_orders'
+{{ codegen.generate_model_yaml(
+    model_names=['stg_jaffle_shop__customers', 'stg_jaffle_shop__orders']
+    , upstream_descriptions=true
+    , include_data_types=false
 ) }}
