@@ -1,0 +1,132 @@
+version: 2
+
+models:
+  - name: int_amp__locations
+    description: "table for locations data"
+
+    columns:
+      - name: location_sk_id
+        data_type: number
+        description: "{{doc('location_sk_id')}}"
+        data_tests:
+          - not_null
+          - unique
+        
+      - name: ip_address
+        data_type: varchar
+        description: "{{doc('ip_address')}}"
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: region
+        data_type: varchar
+        description: ""
+
+  - name: int_amp__users
+    description: "table for users data. includes email address and company affiliation if available"
+    columns:
+      - name: amplitude_id
+        data_type: number
+        description: "{{doc('amplitude_id')}}"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        data_type: varchar
+        description: "{{doc('user_id')}}"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: company
+        data_type: varchar
+        description: "{{doc('company')}}"
+
+  - name: int_amp__events
+    description: "table for events data. fact table"
+    columns:
+      - name: event_sk_id
+        data_type: varchar
+        description: "{{doc('event_sk_id')}}"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: row_number
+        data_type: number
+        description: "{{doc('row_number')}}"
+
+      - name: session_id
+        data_type: number
+        description: "{{doc('session_id')}}"
+
+      - name: event_id
+        data_type: number
+        description: "{{doc('event_id')}}"
+
+      - name: event_time
+        data_type: varchar
+        description: "{{doc('event_time')}}"
+
+      - name: client_upload_time
+        data_type: varchar
+        description: "{{doc('client_upload_time')}}"
+
+      - name: client_event_time
+        data_type: varchar
+        description: ""
+
+      - name: event_type
+        data_type: varchar
+        description: "{{doc('event_type')}}"
+
+      - name: device_id
+        data_type: varchar
+        description: ""
+
+      - name: amplitude_id
+        data_type: number
+        description: ""
+
+      - name: extract_time
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: page_counter
+        data_type: number
+        description: ""
+
+      - name: page_domain
+        data_type: varchar
+        description: ""
+
+      - name: page_location
+        data_type: varchar
+        description: ""
+
+      - name: page_path
+        data_type: varchar
+        description: ""
+
+      - name: page_title
+        data_type: varchar
+        description: ""
+
+      - name: page_url
+        data_type: varchar
+        description: ""
+
+      - name: referrer
+        data_type: varchar
+        description: ""
+
+      - name: referring_domain
+        data_type: varchar
+        description: ""

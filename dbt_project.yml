@@ -47,6 +47,15 @@ on-run-end:
 
 models:
   des_training_project:
+    staging_amp:
+      tags: "amp"
+      schema: staging
+      +materialized: table
+    intermediate_amp:
+      tags: "amp"
+      schema: intermediate
+      +materialized: table
+
     staging:
       query_tag: dbt_staging
         # This applies a query tag named `dbt_staging` to any related queries in Snowflake's Query_History
@@ -65,7 +74,7 @@ models:
 
     intermediate:
       schema: intermediate
-      +materialized: view
+      +materialized: table
       query_tag: dbt_int
 
     marts:

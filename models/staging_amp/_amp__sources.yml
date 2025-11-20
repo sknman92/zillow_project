@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: amp
+    database: TIL_DATA_ENGINEERING
+    schema: CYI_Staging
+    tables:
+      - name: AMPLITUDE_EVENTS_RAW_PYTHON
+        description: "contains json arrays of amplitude events"
