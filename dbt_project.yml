@@ -55,6 +55,13 @@ models:
       tags: "amp"
       schema: intermediate
       +materialized: table
+    marts_amp:
+      tags: "amp"
+      schema: marts
+      +materialized: table
+      temporary:
+          schema: temporary
+          +materialized: view
 
     staging:
       query_tag: dbt_staging

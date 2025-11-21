@@ -7,3 +7,12 @@ sources:
     tables:
       - name: AMPLITUDE_EVENTS_RAW_PYTHON
         description: "contains json arrays of amplitude events"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
+          
+          # other uses for loaded at field
