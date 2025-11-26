@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: amp
+    database: TIL_DATA_ENGINEERING
+    schema: CYI_Staging
+    tables:
+      - name: AMPLITUDE_EVENTS_RAW_PYTHON
+        description: "contains json arrays of amplitude events"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
+    
+  - name: mailchimp
+    database: TIL_DATA_ENGINEERING
+    schema: CYI_Staging
+    tables:
+      - name: mailchimp_raw_python_members
+        description: "dim table of member records from mailchimp"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
+      - name: mailchimp_raw_python_clicks
+        description: "fact table to member clicks on links sent during campaigns"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
