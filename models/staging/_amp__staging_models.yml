@@ -235,3 +235,21 @@ models:
       - name: event_sk_id
         data_type: number
         description: "{{doc('event_sk_id')}}"
+
+  - name: stg_mailchimp__members
+    columns:
+      - name: member_id
+      - name: email_address
+        description: "primary key for members"
+        data_tests:
+          - not_null
+          - unique
+      - name: status
+      - name: company
+      - name: full_name
+      - name: timestamp_signup
+      - name: last_changed
+        description: "when member was last modified"
+      - name: extract_time
+        description: "time of api call"
+      

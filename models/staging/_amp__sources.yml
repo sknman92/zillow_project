@@ -29,7 +29,7 @@ sources:
             count: 48
             period: hour
       - name: mailchimp_raw_python_clicks
-        description: "fact table to member clicks on links sent during campaigns"
+        description: "fact table of member clicks on links sent during campaigns"
         freshness:
           warn_after:
             count: 24
@@ -37,3 +37,23 @@ sources:
           error_after:
             count: 48
             period: hour
+      - name: mailchimp_raw_python_email_activity
+        description: "fact table of email activity on links sent during campaigns"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
+      
+      - name: mailchimp_raw_python_campaigns
+        description: "dimension table of campaigns"
+        freshness:
+          warn_after:
+            count: 24
+            period: hour
+          error_after:
+            count: 48
+            period: hour
+          
