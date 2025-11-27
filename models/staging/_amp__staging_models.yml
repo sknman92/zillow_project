@@ -253,3 +253,27 @@ models:
       - name: extract_time
         description: "time of api call"
       
+  - name: stg_mailchimp__campaigns
+    columns:
+      - name: campaign_id
+        description: "unique identifier for each campaign"
+        data_tests:
+          - not_null
+          - unique
+  
+  - name: stg_mailchimp__clicks
+    columns:
+      - name: clicks_id
+        description: "surrogated pkey for clicks"
+        data_tests:
+          - not_null
+          - unique
+  
+  - name: stg_mailchimp__email_activity
+    columns:
+      - name: email_activity_id
+        description: "surrogated pkey for email activity"
+        data_tests:
+          - not_null
+          - unique
+      
