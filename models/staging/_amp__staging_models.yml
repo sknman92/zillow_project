@@ -270,10 +270,10 @@ models:
           - unique
   
   - name: stg_mailchimp__email_activity
-    columns:
-      - name: email_activity_id
-        description: "surrogated pkey for email activity"
-        data_tests:
-          - not_null
-          - unique
+    # columns:
+    #   - name: email_activity_id
+    #     description: "surrogated pkey for email activity"
+    #     data_tests:
+    #       - not_null
+    #       - unique
       

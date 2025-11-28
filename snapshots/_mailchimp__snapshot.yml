@@ -11,6 +11,6 @@ snapshots:
     relation: source('mailchimp', 'mailchimp_raw_python_campaigns')
     description: "snapshot for mailchimp campaigns dim table"
     config:
-      strategy: timestamp 
+      strategy: check
       unique_key: campaign_id
-      updated_at: extract_time
+      check_cols: ['last_open', 'last_click']

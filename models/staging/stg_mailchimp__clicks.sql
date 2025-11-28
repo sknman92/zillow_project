@@ -6,8 +6,15 @@
 }}
 
 with source as (
-    select *
-        ,  {{ dbt_utils.generate_surrogate_key(['url_link', 'url_id', 'campaign_id', 'email_id', 'email_address', 'extract_time']) }} as clicks_id
+    select 
+        url_link
+        , url_id
+        , campaign_id
+        , email_id
+        , email_address
+        , clicks
+        , extract_time
+        ,  {{ dbt_utils.generate_surrogate_key(['url_link', 'url_id', 'campaign_id', 'email_id', 'email_address']) }} as clicks_id
     from {{ source('mailchimp', 'mailchimp_raw_python_clicks') }}
 )
 

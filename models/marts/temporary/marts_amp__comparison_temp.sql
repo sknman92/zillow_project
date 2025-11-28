@@ -36,6 +36,12 @@ users as (
 joined as (
     select 
        e.*
+       , l.ip_address
+       , l.city
+       , l.country
+       , l.region
+       , u.user_id
+       , u.company
     from events as e
 
     full join locations as l
