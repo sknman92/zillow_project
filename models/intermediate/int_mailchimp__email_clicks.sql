@@ -10,7 +10,7 @@ duplicate_clicks as (
         , email_address
         , count(action) as total_clicks
         , timestamp
-        , type
+        , type 
         , url
         , ip_hashed
         , extract_time

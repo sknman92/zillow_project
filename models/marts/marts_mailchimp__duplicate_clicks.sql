@@ -41,7 +41,7 @@ final_cte as (
     select a.*
     , c.campaign_title
     from agg as a
-    join campaign as c
+    join campaign as c 
         on a.campaign_id = c.campaign_id
 )
 
