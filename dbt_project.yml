@@ -17,8 +17,6 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
-target-path: "target" # directory which will store compiled SQL files
 clean-targets: # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
@@ -30,10 +28,8 @@ seeds:
   +quote_columns: false
 
 on-run-end:
-# dropping the temporary schema and everything within it after a run has completed
+  # dropping the temporary schema and everything within it after a run has completed
   - "{{' DROP SCHEMA IF EXISTS '~ target.database ~'.'~ target.schema ~'_TEMPORARY CASCADE;'}}"
-
-
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -46,30 +42,24 @@ on-run-end:
 # using the `{{ config(...) }}` macro.
 
 models:
-
   des_training_project:
+    # staging:
+    #   +materialized: view
+    # intermediate:
+    #   +materialized: table
+    # marts:
+    #   +materialized: table
 
-    staging_amp:
-      tags: "amp"
-      schema: staging
+    # creating separate configurations for zillow models
+    staging_zillow:
+      +materialized: view
+      +schema: zillow
+    intermediate_zillow:
+      +materialized: view
+      +schema: zillow
+    marts_zillow:
       +materialized: table
+      +schema: zillow
 
-
-    intermediate_amp:
-      tags: "amp"
-      schema: intermediate
-      +materialized: table
-
-
-    marts_amp:
-      tags: "amp"
-      schema: marts
-      +materialized: table
-
-      temporary:
-          schema: temporary
-          +materialized: view
-
-  
-
-
+flags:
+  require_generic_test_arguments_property: true

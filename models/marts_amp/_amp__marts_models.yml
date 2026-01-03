@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: marts_amp__repeated_clicks
+    description: "table aggregating repeated clicks"
+    columns:
+      - name: session_id
+        description: "{{doc('session_id')}}"
+
+      - name: extract_time
+        description: "{{doc('extract_time')}}"
+
+      - name: page_title
+        description: page title that user is making clicks in
+
+      - name: max_clicks
+        description: max number of clicks per session within a paged
+
+  # - name: marts_amp__comparison_temp
+  #   description: "for testing that denormalized table matches row count of base table"
+  #   tests:
+  #     - dbt_utils.equal_rowcount:
+  #         compare_model: ref('stg_amp__base_level')

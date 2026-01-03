@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_zillow__for_sale_unioned
+    description: ""
+    columns:
+      - name: regionid
+        data_type: number
+        description: ""
+
+      - name: sizerank
+        data_type: number
+        description: ""
+
+      - name: regionname
+        data_type: varchar
+        description: ""
+
+      - name: regiontype
+        data_type: varchar
+        description: ""
+
+      - name: cityname
+        data_type: varchar
+        description: ""
+
+      - name: statename
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: forsaleinventory
+        data_type: number
+        description: ""
+        data_tests:
+          - no_negative_values
+
+      - name: property_type
+        data_type: varchar
+        description: ""

@@ -1,0 +1,57 @@
+version: 2
+
+sources:
+  - name: zillow
+    database: TIL_DATA_ENGINEERING
+    schema: CYI_Staging
+    description: ""
+    tables:
+      - name: zillow_for_sale_all_homes
+        description: ""
+        columns:
+          - name: regionid
+            data_type: number
+            description: ""
+          - name: sizerank
+            data_type: number
+            description: ""
+          - name: regionname
+            data_type: varchar
+            description: ""
+          - name: regiontype
+            data_type: varchar
+            description: ""
+          - name: statename
+            data_type: varchar
+            description: ""
+          - name: date
+            data_type: timestamp_ntz
+            description: ""
+          - name: forsaleinventory
+            data_type: number
+            description: ""
+
+      - name: zillow_for_sale_sfr
+        description: ""
+        columns:
+          - name: regionid
+            data_type: number
+            description: ""
+          - name: sizerank
+            data_type: number
+            description: ""
+          - name: regionname
+            data_type: varchar
+            description: ""
+          - name: regiontype
+            data_type: varchar
+            description: ""
+          - name: statename
+            data_type: varchar
+            description: ""
+          - name: date
+            data_type: timestamp_ntz
+            description: ""
+          - name: forsaleinventory
+            data_type: number
+            description: ""

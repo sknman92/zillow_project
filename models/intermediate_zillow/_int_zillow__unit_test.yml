@@ -1,0 +1,17 @@
+unit_tests:
+  - name: int_zillow_unit_test
+    description: "testing city name in int zillow models"
+    model: int_zillow__for_sale_unioned
+    given:
+      - input: ref('stg_zillow__for_sale_all_homes')
+        rows:
+          - { regionname: "San Francisco, CA" }
+          - { regionname: "United States" }
+      - input: ref('stg_zillow__for_sale_sfr')
+        rows:
+          - { regionname: "CA" }
+    expect:
+      rows:
+        - { regionname: "San Francisco, CA", cityname: "San Francisco" }
+        - { regionname: "United States", cityname: null }
+        - { regionname: "CA", cityname: null }

@@ -1,0 +1,7 @@
+{
+  "chat.mcp.serverSampling": {
+    "TILUK-DES1-dbt-Cloud/.vscode/mcp.json: dbt": {
+      "allowedModels": ["copilot/auto"]
+    }
+  }
+}

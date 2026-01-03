@@ -1,0 +1,7 @@
+﻿dbt-fusion 2.0.0-preview.72
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+
+==================== Execution Summary =====================
+Finished 'parse' with 1 warning and 12 errors for target 'dev' [881ms]
