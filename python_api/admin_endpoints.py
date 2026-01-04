@@ -35,7 +35,7 @@ def admin_api(endpoint: str, offset: int = 0) -> pd.DataFrame:
 df_list = []
 offset = 0
 while True:
-    df, total_count = admin_api("runs", offset=offset)
+    df, total_count = admin_api("runs", offset=offset) # specify endpoint here
     df_list.append(df)
     df_final = pd.concat(df_list, ignore_index=True)
     if len(df_final) >= total_count:

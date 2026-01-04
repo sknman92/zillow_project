@@ -3,13 +3,11 @@
 with current_previous_values as (
     select 
         date_trunc('{{ frequency }}', date) as period,
-        {{ partition[0]}},
-        {{ partition[1]}},
-        {{ partition[2]}},
+        {{ partition | join(', ') }},
         sum({{ metric_col }}) as current_value,
         lag(sum({{ metric_col }} )) over (partition by {{ partition[0]}}, {{ partition[1]}}, {{ partition[2]}} order by date_trunc('{{ frequency }}', date)) as previous_value
     from {{ table }}
-    group by 1,2,3,4
+    group by 1, {{ partition | join(', ') }}
 )
 
 select 
