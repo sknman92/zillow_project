@@ -40,4 +40,4 @@ models:
 
       - name: property_type
         data_type: varchar
-        description: ""
+        description: "either single family residential (sfr) or all"
