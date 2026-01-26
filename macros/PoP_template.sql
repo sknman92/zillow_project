@@ -5,7 +5,7 @@ with current_previous_values as (
         date_trunc('{{ frequency }}', date) as period,
         {{ partition | join(', ') }},
         sum({{ metric_col }}) as current_value,
-        lag(sum({{ metric_col }} )) over (partition by {{ partition[0]}}, {{ partition[1]}}, {{ partition[2]}} order by date_trunc('{{ frequency }}', date)) as previous_value
+        lag(sum({{ metric_col }} )) over (partition by {{ partition | join(', ') }} order by date_trunc('{{ frequency }}', date)) as previous_value
     from {{ table }}
     group by 1, {{ partition | join(', ') }}
 )

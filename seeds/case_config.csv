@@ -1,0 +1,4 @@
+﻿view_name,field,condition,result,alias
+zillow_m_sfr,perc_change,< 0,negative,change_indicator
+zillow_m_sfr,perc_change,> 0,positive,change_indicator
+zillow_m_sfr,statename,AL,Alabama,statename_expanded

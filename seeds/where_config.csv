@@ -1,0 +1,5 @@
+﻿view_name,field,value
+zillow_m_sfr,frequency,month
+zillow_m_sfr,property_type,sfr_homes
+zillow_m_all,frequency,month
+zillow_m_all,property_type,all_homes
