@@ -43,13 +43,6 @@ on-run-end:
 
 models:
   des_training_project:
-    # staging:
-    #   +materialized: view
-    # intermediate:
-    #   +materialized: table
-    # marts:
-    #   +materialized: table
-
     # creating separate configurations for zillow models
     staging_zillow:
       +materialized: view

@@ -48,5 +48,3 @@ unioned_frequncy_PoP as (
 
 select *
 from unioned_frequncy_PoP
-where frequency = 'year'
-

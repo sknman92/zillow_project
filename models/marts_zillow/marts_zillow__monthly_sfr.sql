@@ -1,0 +1,1 @@
+{{generate_int_model(upstream_model = 'int_zillow__PoP_metrics',where_filter='zillow_m_sfr',case_condition='zillow_m_sfr',leading_commas=True)}}
